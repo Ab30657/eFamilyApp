@@ -9,8 +9,11 @@
   <ItemGroup>
     <None Remove="assets\logo.png" />
     <None Remove="assets\profile.jpg" />
+    <None Remove="assets\welcome.png" />
     <None Remove="assets\welcome3.png" />
     <None Remove="assets\welcome4.png" />
+    <None Remove="assets\welcomebg2.png" />
+    <None Remove="assets\welcomex.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,12 +26,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="assets\welcome.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\welcomex.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="assets\welcome3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="assets\welcome4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Content Include="assets\welcomebg2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

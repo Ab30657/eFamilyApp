@@ -12,9 +12,14 @@
 
         <DropShadowBitmapEffect x:Key="DropShadowEffect" Softness="1" ShadowDepth="8" Opacity="0.2" Color="#00F260" Direction="240"/>
 
+        <LinearGradientBrush x:Key="ThemeIndicatorColor" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#00F260" Offset="0.0"/>
+            <GradientStop Color="#0575E6" Offset="1.0"/>
+        </LinearGradientBrush>
+
         <Style x:Key="IndicatorStyle" TargetType="{x:Type Border}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Background" Value="{StaticResource ThemeColor}"/>
+            <Setter Property="Background" Value="{StaticResource ThemeIndicatorColor}"/>
             <Setter Property="Visibility" Value="Hidden"/>
             <Setter Property="Width" Value="4"/>
             <Style.Triggers>

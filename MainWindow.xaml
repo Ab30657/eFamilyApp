@@ -120,15 +120,15 @@
                                             </TextBlock>
                                         </Grid>
                                     </Border>
-                                    <Rectangle Grid.Column="1" Margin="10,-10,10,10">
+                                    <Rectangle UseLayoutRounding="True" Grid.Column="1" Margin="-20,-50,10,10">
                                         <Rectangle.Fill>
-                                            <ImageBrush ImageSource="/assets/welcome.png" Stretch="UniformToFill">
+                                            <ImageBrush ImageSource="/assets/welcomex.png" Stretch="Uniform">
                                             </ImageBrush>
                                         </Rectangle.Fill>
                                         <Rectangle.OpacityMask>
                                             <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
                                                 <LinearGradientBrush.GradientStops>
-                                                    <GradientStop Offset="0.3" Color="Black"/>
+                                                    <GradientStop Offset="0.4" Color="Black"/>
                                                     <GradientStop Offset="1" Color="Transparent"/>
                                                 </LinearGradientBrush.GradientStops>
                                             </LinearGradientBrush>
@@ -139,6 +139,26 @@
 
                             <Border Margin="0,20,0,20" Grid.Row="1" Padding="5" CornerRadius="12" Background="White">
                                 
+                            </Border>
+                            <Border Grid.Row="2">
+                                <Grid HorizontalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Width="220" Margin="10" CornerRadius="12" Background="LightCoral">
+                                        
+                                    </Border>
+
+                                    <Border Width="220" Margin="10" Grid.Column="1" CornerRadius="12" Background="LightCoral">
+
+                                    </Border>
+
+                                    <Border Width="220" Margin="10" Grid.Column="2" CornerRadius="12" Background="LightCoral">
+
+                                    </Border>
+                                </Grid>
                             </Border>
                         </Grid>
                     </Border>
