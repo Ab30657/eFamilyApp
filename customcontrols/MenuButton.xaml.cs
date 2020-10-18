@@ -88,5 +88,17 @@ namespace Family.customcontrols
 
 
 
+        public Brush IndicatorBrush
+        {
+            get { return (Brush)GetValue(IndicatorBrushProperty); }
+            set { SetValue(IndicatorBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IndicatorBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IndicatorBrushProperty =
+            DependencyProperty.Register("IndicatorBrush", typeof(Brush), typeof(MenuButton));
+
+
+
     }
 }

@@ -27,21 +27,122 @@
                 <StackPanel Orientation="Vertical" Margin="0,5,0,0">
                     <Image Source="/assets/logo.png" Width="150" Height="150"/>
 
-                    <uBuilt:MenuButton IsSelected="True" Text="My Dashboard" Padding="20,0,0,0" Icon="{StaticResource Dashboard}" GroupName="MenuButton"/>
+                    <uBuilt:MenuButton IsSelected="True" Text="My Dashboard" Icon="{StaticResource Dashboard}" GroupName="MenuButton"/>
 
-                    <uBuilt:MenuButton Text="Spending Report" Padding="20,0,0,0" Icon="{StaticResource Money}" GroupName="MenuButton"/>
+                    <uBuilt:MenuButton Text="Spending Report" Icon="{StaticResource Money}" GroupName="MenuButton"/>
 
-                    <uBuilt:MenuButton Text="Chat" Padding="20,0,0,0" Icon="{StaticResource Chat}" GroupName="MenuButton"/>
+                    <uBuilt:MenuButton Text="Chat" Icon="{StaticResource Chat}" GroupName="MenuButton"/>
 
-                    <Rectangle Fill="LightGray" Height="2" Margin="5"/>
+                    <uBuilt:MenuButton Text="Accounts" Icon="{StaticResource Accounts}" GroupName="MenuButton"/>
 
-                    <uBuilt:MenuButton Text="Accounts" Padding="20,0,0,0" Icon="{StaticResource Accounts}" GroupName="MenuButton"/>
-
-                    <uBuilt:MenuButton Text="Settings" Padding="20,0,0,0" Icon="{StaticResource Settings}" GroupName="MenuButton"/>
+                    <uBuilt:MenuButton Text="Settings" Icon="{StaticResource Settings}" GroupName="MenuButton"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
-                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,35,0,0" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="My Dashboard" FontWeight="SemiBold" FontSize="18"/>
+                    <Border Grid.Row="1" Padding="0,12,0,12">
+                        <TextBlock Text="Loren Ipsum something something" Style="{StaticResource TitleText}"/>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,35,40,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Ellipse Height="60" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/assets/profile.jpg" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <Grid Grid.Column="1" Margin="14,10" Width="150">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Amar Budhathoki" Style="{StaticResource MainText}"/>
+                        <TextBlock Grid.Row="1" Text="Baglung" Style="{StaticResource TitleText}"/>
+                    </Grid>
+
+                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="2" Data="{StaticResource Notification}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
+                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="3" Data="{StaticResource Shutdown}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
+                </Grid>
+
+                <Grid Grid.Row="1" Background="Transparent" Margin="40,0,50,40">
+                    <Border Background="#F7F8FA" CornerRadius="20" Padding="20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1.5*"/>
+                                <RowDefinition Height="3*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Border CornerRadius="12">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="/assets/welcomebg2.png"/>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border Padding="30,20">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                                <RowDefinition Height="3*"/>
+                                                <RowDefinition Height="3*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <TextBlock Style="{StaticResource TitleText}" Foreground="#f5f5f5" FontWeight="ExtraLight">
+                                                <Run Text="Hello Amar,"/>
+                                            </TextBlock>
+                                            <TextBlock Grid.Row="1" Style="{StaticResource MainText}" FontSize="28" Foreground="White" VerticalAlignment="Center">
+                                                <Run Text="Welcome to the eFam App"/>
+                                            </TextBlock>
+                                            <TextBlock TextWrapping="Wrap" Padding="0,0,20,0" Grid.Row="2" Style="{StaticResource TitleText}" Foreground="#f5f5f5">
+                                                <Run Text="All about family project activities will be update here. Learn more about us online..."/>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <Rectangle Grid.Column="1" Margin="10,-10,10,10">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="/assets/welcome.png" Stretch="UniformToFill">
+                                            </ImageBrush>
+                                        </Rectangle.Fill>
+                                        <Rectangle.OpacityMask>
+                                            <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                <LinearGradientBrush.GradientStops>
+                                                    <GradientStop Offset="0.3" Color="Black"/>
+                                                    <GradientStop Offset="1" Color="Transparent"/>
+                                                </LinearGradientBrush.GradientStops>
+                                            </LinearGradientBrush>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Grid>
+                            </Border>
+
+                            <Border Margin="0,20,0,20" Grid.Row="1" Padding="5" CornerRadius="12" Background="White">
+                                
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
         </Grid>
     </Border>
