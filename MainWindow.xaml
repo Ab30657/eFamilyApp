@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Family"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         xmlns:uBuilt="clr-namespace:Family.customcontrols"
         mc:Ignorable="d"
         Background="Transparent" AllowsTransparency="True"
@@ -138,7 +139,35 @@
                             </Border>
 
                             <Border Margin="0,20,0,20" Grid.Row="1" Padding="5" CornerRadius="12" Background="White">
-                                
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Family Spendings Report" 
+                                               Style="{StaticResource MainText}" FontSize="22" HorizontalAlignment="Left"/>
+                                    <Path Margin="0,0,15,0" HorizontalAlignment="Right" Grid.Row="0" Data="{StaticResource Refresh}" Fill="{StaticResource ThemeColor}" Stretch="UniformToFill" Height="18" Width="18"/>
+
+                                    <lvc:CartesianChart Margin="0,10,0,0" Grid.Row="1">
+                                        <lvc:CartesianChart.Series>
+                                            <lvc:LineSeries Values="{Binding SeriesCollection.Values}" LineSmoothness="1" FontSize="20" Stroke="{StaticResource ThemeColor}" PointGeometry="{x:Static lvc:DefaultGeometries.Circle}"  PointGeometrySize="10">
+                                                <lvc:LineSeries.Fill>
+                                                    <LinearGradientBrush Opacity="0.5" StartPoint="0.5,0" EndPoint="0.5,1">
+                                                        <GradientStop Offset="0" Color="#00F260"/>
+                                                        <GradientStop Offset="0.7" Color="#0575E6"/>
+                                                        <GradientStop Offset="1.6" Color="Transparent"/>
+                                                    </LinearGradientBrush>
+                                                </lvc:LineSeries.Fill>
+                                            </lvc:LineSeries>
+                                        </lvc:CartesianChart.Series>
+                                        <lvc:CartesianChart.AxisY>
+                                            <lvc:Axis Title="Spending" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                                        </lvc:CartesianChart.AxisY>
+                                        <lvc:CartesianChart.AxisX>
+                                            <lvc:Axis Title="Month" Labels="{Binding Labels}"></lvc:Axis>
+                                        </lvc:CartesianChart.AxisX>
+                                    </lvc:CartesianChart>
+                                </Grid>
                             </Border>
                             <Border Grid.Row="2">
                                 <Grid HorizontalAlignment="Center">
@@ -147,19 +176,123 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Border Width="220" Margin="10" CornerRadius="12" Background="LightCoral">
-                                        
+                                    <Border Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" CornerRadius="12">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Padding="10,0,0,0" Text="Olivia" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
+                                                <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="has sent you a message" Opacity="0.6" FontWeight="Bold"></TextBlock>
+                                            </StackPanel>
+                                            <Rectangle Grid.Column="1" Margin="-25,0,5,5">
+                                                <Rectangle.Fill>
+                                                    <ImageBrush ImageSource="/assets/chat.png" Stretch="UniformToFill">
+                                                    </ImageBrush>
+                                                </Rectangle.Fill>
+                                                <Rectangle.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.3" Color="Black"/>
+                                                            <GradientStop Offset="1" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </Grid>
                                     </Border>
 
-                                    <Border Width="220" Margin="10" Grid.Column="1" CornerRadius="12" Background="LightCoral">
+                                    <Border Width="220" Margin="10" Background="{StaticResource ThemeColor}" Grid.Column="1" CornerRadius="12">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <uBuilt:CircularProgressBar HorizontalAlignment="Left" Margin="10,5,0,5"
+                                                    Value="4" ArcThickness="10"
+                                                    IndicatorBrush="Blue"
+                                                    BackgroundBrush="White"
+                                                    Height="50" Width="50" PFontColor="White"/>
+                                            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="12" Padding="10,0,0,0" FontWeight="Bold" Foreground="White" Text="Tasks remaining..."/>
+                                            <TextBlock Grid.Row="2" FontSize="8.5" Foreground="White" Opacity="0.8" Padding="10,0,0,0" FontWeight="Bold" Grid.ColumnSpan="2" Text="Complete these tasks to receive your pocket money."/>
+                                            <Rectangle Grid.Row="0" Margin="0,-20,0,10" Grid.Column="1">
+                                                <Rectangle.Fill>
+                                                    <ImageBrush ImageSource="/assets/chores.png" Stretch="Uniform"/>
+                                                </Rectangle.Fill>
+                                                <Rectangle.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.4" Color="Black"/>
+                                                            <GradientStop Offset="1" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
 
+
+                                        </Grid>
                                     </Border>
 
-                                    <Border Width="220" Margin="10" Grid.Column="2" CornerRadius="12" Background="LightCoral">
-
+                                    <Border Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Path Margin="10,0,0,0" VerticalAlignment="Top" Fill="{StaticResource ThemeColor}" Data="{StaticResource Download}" Opacity="0.8" HorizontalAlignment="Left" Width="60" Height="60" Stretch="Uniform">
+                                                <Path.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.2" Color="Black"/>
+                                                            <GradientStop Offset="0.8" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Path.OpacityMask>
+                                            </Path>
+                                            <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock Padding="10,40,0,0" Text="102.8 GB" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
+                                                <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="Data used this week" Opacity="1" FontWeight="Bold"></TextBlock>
+                                            </StackPanel>
+                                            <Rectangle Grid.Column="1" Margin="0,0,5,0">
+                                                <Rectangle.Fill>
+                                                    <ImageBrush ImageSource="/assets/data.png" Stretch="Uniform">
+                                                    </ImageBrush>
+                                                </Rectangle.Fill>
+                                                <Rectangle.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,1" EndPoint="0,1">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.2" Color="Black"/>
+                                                            <GradientStop Offset="1" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </Grid>
                                     </Border>
                                 </Grid>
                             </Border>
+
+                            <Grid Margin="15,-5,0,0" Grid.RowSpan="3" Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="2*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Padding="15,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Run FontSize="30" Foreground="Blue" FontFamily="Open Sans" FontWeight="SemiBold" Text="Grocery "/>
+                                    <Run FontSize="30" Foreground="Blue" FontFamily="Open Sans" FontWeight="Normal" Text="List"/>
+                                    <LineBreak/>
+                                    <Run Text="Updated by Emily Yesterday" FontSize="18" Foreground="Gray" FontWeight="SemiBold"/>
+                                </TextBlock>
+                                <Path Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Data="{StaticResource More}" Stretch="Uniform" Height="30" Width="30" Fill="{StaticResource ThemeColor}"/>
+
+                                <uBuilt:CustomList Margin="0,90,0,0" HorizontalAlignment="Stretch"/>
+                            </Grid>
                         </Grid>
                     </Border>
                 </Grid>

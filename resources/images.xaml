@@ -1,0 +1,6 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Family.resources">
+
+    <BitmapImage x:Key="milk" UriSource="/Family;component/assets/milk.png" />
+</ResourceDictionary>

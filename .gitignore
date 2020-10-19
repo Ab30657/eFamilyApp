@@ -31,6 +31,7 @@ csharp.gitignore
 x64
 [Bb]in
 [Oo]bj
+[raw]
 
 # MSTest test Results
 [Tt]est[Rr]esult

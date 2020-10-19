@@ -25,6 +25,9 @@
             <GradientStop Color="#00F260" Offset="0.0"/>
             <GradientStop Color="#0575E6" Offset="1.0"/>
         </LinearGradientBrush>
-        
+        <GradientStopCollection x:Key="GraphTheme">
+            <GradientStop Offset="0.5" Color="Black"/>
+            <GradientStop Offset="1" Color="Transparent"/>
+        </GradientStopCollection>
     </Application.Resources>
 </Application>

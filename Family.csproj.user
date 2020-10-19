@@ -7,11 +7,23 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="customcontrols\CircularProgressBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="customcontrols\CustomList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="customcontrols\MenuButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="customcontrols\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="customcontrols\CustomList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="customcontrols\MenuButton.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -19,6 +31,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="resources\icons.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="resources\images.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
