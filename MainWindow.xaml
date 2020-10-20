@@ -176,15 +176,21 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Border Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" CornerRadius="12">
+                                    <Border SnapsToDevicePixels="True" UseLayoutRounding="True" Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" CornerRadius="12">
+                                        <Border.Background>
+                                            <LinearGradientBrush x:Name="ThemeBrush" Opacity="0" StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#00F260" Offset="0.0"/>
+                                                <GradientStop Color="#0575E6" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Padding="10,0,0,0" Text="Olivia" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
-                                                <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="has sent you a message" Opacity="0.6" FontWeight="Bold"></TextBlock>
+                                                <TextBlock x:Name="ChatUser" Padding="10,0,0,0" Text="Olivia" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
+                                                <TextBlock x:Name="DefaultChatFooter" Padding="10,0,0,0" Foreground="Blue" Text="has sent you a message" Opacity="0.6" FontWeight="Bold"></TextBlock>
                                             </StackPanel>
                                             <Rectangle Grid.Column="1" Margin="-25,0,5,5">
                                                 <Rectangle.Fill>
@@ -201,6 +207,30 @@
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                         </Grid>
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="ThemeBrush"
+                                                                                Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
+                                                                                To="1" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Border.MouseLeave">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="ThemeBrush"
+                                                                                Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
+                                                                                To="0" Duration="0:0:0.5" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                        </Border.Triggers>
                                     </Border>
 
                                     <Border Width="220" Margin="10" Background="{StaticResource ThemeColor}" Grid.Column="1" CornerRadius="12">
@@ -292,25 +322,35 @@
                                 <Path Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Data="{StaticResource More}" Stretch="Uniform" Height="30" Width="30" Fill="{StaticResource ThemeColor}"/>
                                 <uBuilt:CustomList Margin="0,70,0,0" HorizontalAlignment="Stretch"/>
 
-                                <Border Grid.Row="1" Width="Auto" Margin="0,10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
+                                <Border Grid.Row="1" Width="Auto" Margin="0,10" Background="{StaticResource ThemeColor}" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                                            <TextBlock Padding="10,40,0,0" Text="102.8 GB" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
-                                            <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="Data used this week" Opacity="1" FontWeight="Bold"></TextBlock>
+                                        <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
+                                            <Image Margin="10,-15,0,0" VerticalAlignment="Top" Source="/assets/game.png" Opacity="0.8" HorizontalAlignment="Left" Width="120" Height="120" Stretch="Uniform">
+                                                <Image.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.5" Color="Black"/>
+                                                            <GradientStop Offset="1" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Image.OpacityMask>
+                                            </Image>
+                                            <TextBlock Padding="10,0,0,0" Text="Gaming with Liam" Style="{StaticResource MainText}" Foreground="White" FontSize="20"/>
+                                            <TextBlock Padding="10,0,0,0" Foreground="Orange" Text="Sunday July 11 at 9:00 am" Opacity="1" FontWeight="Bold" FontSize="15"></TextBlock>
                                         </StackPanel>
-                                        <Rectangle Grid.Column="1" Margin="0,0,5,0">
+                                        <Rectangle Grid.Column="1" Margin="0,5,-10,5">
                                             <Rectangle.Fill>
-                                                <ImageBrush ImageSource="/assets/data.png" Stretch="Uniform">
+                                                <ImageBrush ImageSource="/assets/gaming.png" Stretch="Uniform">
                                                 </ImageBrush>
                                             </Rectangle.Fill>
                                             <Rectangle.OpacityMask>
                                                 <LinearGradientBrush StartPoint="1,1" EndPoint="0,1">
                                                     <LinearGradientBrush.GradientStops>
-                                                        <GradientStop Offset="0.2" Color="Black"/>
+                                                        <GradientStop Offset="0.5" Color="Black"/>
                                                         <GradientStop Offset="1" Color="Transparent"/>
                                                     </LinearGradientBrush.GradientStops>
                                                 </LinearGradientBrush>

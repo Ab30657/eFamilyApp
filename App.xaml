@@ -21,7 +21,7 @@
         </Style>
 
 
-        <LinearGradientBrush x:Key="ThemeColor" StartPoint="0,0" EndPoint="1,1">
+        <LinearGradientBrush x:Name="GThemeBrush" x:Key="ThemeColor" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#00F260" Offset="0.0"/>
             <GradientStop Color="#0575E6" Offset="1.0"/>
         </LinearGradientBrush>
