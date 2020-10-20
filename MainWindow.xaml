@@ -284,14 +284,41 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Padding="15,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                    <Run FontSize="30" Foreground="Blue" FontFamily="Open Sans" FontWeight="SemiBold" Text="Grocery "/>
-                                    <Run FontSize="30" Foreground="Blue" FontFamily="Open Sans" FontWeight="Normal" Text="List"/>
+                                    <Run FontSize="30" Foreground="Black" FontFamily="Open Sans" FontWeight="SemiBold" Text="Grocery "/>
+                                    <Run FontSize="30" Foreground="Black" FontFamily="Open Sans" FontWeight="Normal" Text="List"/>
                                     <LineBreak/>
                                     <Run Text="Updated by Emily Yesterday" FontSize="18" Foreground="Gray" FontWeight="SemiBold"/>
                                 </TextBlock>
                                 <Path Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Data="{StaticResource More}" Stretch="Uniform" Height="30" Width="30" Fill="{StaticResource ThemeColor}"/>
+                                <uBuilt:CustomList Margin="0,70,0,0" HorizontalAlignment="Stretch"/>
 
-                                <uBuilt:CustomList Margin="0,90,0,0" HorizontalAlignment="Stretch"/>
+                                <Border Grid.Row="1" Width="Auto" Margin="0,10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
+                                            <TextBlock Padding="10,40,0,0" Text="102.8 GB" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
+                                            <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="Data used this week" Opacity="1" FontWeight="Bold"></TextBlock>
+                                        </StackPanel>
+                                        <Rectangle Grid.Column="1" Margin="0,0,5,0">
+                                            <Rectangle.Fill>
+                                                <ImageBrush ImageSource="/assets/data.png" Stretch="Uniform">
+                                                </ImageBrush>
+                                            </Rectangle.Fill>
+                                            <Rectangle.OpacityMask>
+                                                <LinearGradientBrush StartPoint="1,1" EndPoint="0,1">
+                                                    <LinearGradientBrush.GradientStops>
+                                                        <GradientStop Offset="0.2" Color="Black"/>
+                                                        <GradientStop Offset="1" Color="Transparent"/>
+                                                    </LinearGradientBrush.GradientStops>
+                                                </LinearGradientBrush>
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Grid>
+                                </Border>
+
                             </Grid>
                         </Grid>
                     </Border>

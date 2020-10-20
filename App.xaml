@@ -29,5 +29,7 @@
             <GradientStop Offset="0.5" Color="Black"/>
             <GradientStop Offset="1" Color="Transparent"/>
         </GradientStopCollection>
+
+
     </Application.Resources>
 </Application>

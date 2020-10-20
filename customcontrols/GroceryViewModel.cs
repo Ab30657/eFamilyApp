@@ -19,7 +19,12 @@ namespace Family.customcontrols
 
                 return new ObservableCollection<GetFileDetails>
                 {
-                    new GetFileDetails(){ FileThumb=(BitmapImage)dict["milk"], FileName="Milk", Quantity=2, Unit="litres"}
+                    new GetFileDetails(){ FileThumb=(BitmapImage)dict["milk"], FileName="Milk", Quantity=2, Unit="litres"},
+                    new GetFileDetails(){FileThumb=(BitmapImage)dict["eggs"], FileName="Eggs", Quantity=10, Unit="eggs"},
+                    new GetFileDetails(){FileThumb=(BitmapImage)dict["notebook"], FileName="Notebook", Quantity=4, Unit="copies"},
+                    new GetFileDetails(){FileThumb=(BitmapImage)dict["ketchup"], FileName="Ketchup", Quantity=2, Unit="bottles"},
+                    new GetFileDetails(){FileThumb=(BitmapImage)dict["cabbage"], FileName="Cabbage", Quantity=3, Unit="kgs"},
+                    new GetFileDetails(){FileThumb=(BitmapImage)dict["chips"], FileName="Potato Chips", Quantity=4, Unit="packets"}
                 };
             }
         }

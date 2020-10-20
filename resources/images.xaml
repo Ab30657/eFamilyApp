@@ -3,4 +3,14 @@
                     xmlns:local="clr-namespace:Family.resources">
 
     <BitmapImage x:Key="milk" UriSource="/Family;component/assets/milk.png" />
+
+    <BitmapImage x:Key="eggs" UriSource="/Family;component/assets/eggs.png" />
+
+    <BitmapImage x:Key="notebook" UriSource="/Family;component/assets/notes.png" />
+
+    <BitmapImage x:Key="cabbage" UriSource="/Family;component/assets/cabbage.png" />
+
+    <BitmapImage x:Key="ketchup" UriSource="/Family;component/assets/ketchup.png" />
+
+    <BitmapImage x:Key="chips" UriSource="/Family;component/assets/potato_chips.png" />
 </ResourceDictionary>
