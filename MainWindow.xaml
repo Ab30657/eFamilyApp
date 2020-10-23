@@ -58,27 +58,62 @@
                 <Grid Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,35,40,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
+                    <StackPanel Background="White" Grid.Column="0" Orientation="Horizontal">
+                        <StackPanel.Triggers>
+                            <EventTrigger RoutedEvent="StackPanel.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="profile"
+                                                                Storyboard.TargetProperty="(Grid.Margin)"
+                                                                Duration="0:0:0">
+                                                <DiscreteThicknessKeyFrame Value="14,10" KeyTime="0:0:0"/>
+                                            </ThicknessAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="profile"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             To="150" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="StackPanel.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetName="profile"
+                                                                Storyboard.TargetProperty="(Grid.Margin)"
+                                                                Duration="0:0:0">
+                                                <DiscreteThicknessKeyFrame Value="0" KeyTime="0:0:0"/>
+                                            </ThicknessAnimationUsingKeyFrames>
+                                            <DoubleAnimation Storyboard.TargetName="profile"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             To="0" Duration="0:0:0.2"/>
+                                            </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                        </StackPanel.Triggers>
+                        <Ellipse Height="60" Width="60" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/assets/profile.jpg" Stretch="UniformToFill"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <Grid x:Name="profile" Grid.Column="1" Margin="0" Width="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Amar Budhathoki" Style="{StaticResource MainText}"/>
+                            <TextBlock Grid.Row="1" Text="Baglung" Style="{StaticResource TitleText}"/>
+                        </Grid>
+                    </StackPanel>
 
-                    <Ellipse Height="60" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="/assets/profile.jpg" Stretch="UniformToFill"/>
-                        </Ellipse.Fill>
-                    </Ellipse>
-                    <Grid Grid.Column="1" Margin="14,10" Width="150">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="Amar Budhathoki" Style="{StaticResource MainText}"/>
-                        <TextBlock Grid.Row="1" Text="Baglung" Style="{StaticResource TitleText}"/>
-                    </Grid>
 
-                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="2" Data="{StaticResource Notification}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
-                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="3" Data="{StaticResource Shutdown}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
+                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="1" Data="{StaticResource Notification}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
+                    <Path Margin="15,0" HorizontalAlignment="Center" Grid.Column="2" Data="{StaticResource Shutdown}" Fill="{StaticResource ThemeColor}" Height="20" Width="20" Stretch="Uniform"/>
                 </Grid>
 
                 <Grid Grid.Row="1" Background="Transparent" Margin="40,0,50,40">
@@ -467,13 +502,55 @@
                                 <uBuilt:CustomList Margin="0,70,0,0" HorizontalAlignment="Stretch"/>
 
                                 <Border Grid.Row="1" Width="Auto" Margin="0,10" Background="{StaticResource ThemeColor}" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
+                                    <Border.Triggers>
+                                        <EventTrigger RoutedEvent="Border.MouseEnter">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="todoImage"
+                                                                        Storyboard.TargetProperty="Height"
+                                                                        To="50" Duration="0:0:0.2"/>
+                                                        <DoubleAnimation Storyboard.TargetName="todoTitle"
+                                                                        Storyboard.TargetProperty="FontSize"
+                                                                        To="24" Duration="0:0:0.2"/>
+                                                        <ColorAnimation Storyboard.TargetName="todoDateTime"
+                                                                        Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                        To="White" Duration="0:0:0.2"/>
+                                                        <ColorAnimation Storyboard.TargetName="todoTitle"
+                                                                        Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                        To="#ffe45e" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                        <EventTrigger RoutedEvent="Border.MouseLeave">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation    Storyboard.TargetName="todoImage"
+                                                                        Storyboard.TargetProperty="Height"
+                                                                        To="120" Duration="0:0:0.2"/>
+                                                        <DoubleAnimation Storyboard.TargetName="todoTitle"
+                                                                         Storyboard.TargetProperty="FontSize"
+                                                                         To="20" Duration="0:0:0.2"/>
+                                                        <ColorAnimation Storyboard.TargetName="todoDateTime"
+                                                                        Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                        To="#ffe45e" Duration="0:0:0.2"/>
+                                                        <ColorAnimation Storyboard.TargetName="todoTitle"
+                                                                        Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                        To="White" Duration="0:0:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                    </Border.Triggers>
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <StackPanel  Orientation="Vertical" VerticalAlignment="Top">
-                                            <Image Margin="10,-15,0,0" VerticalAlignment="Top" Source="/assets/game.png" Opacity="0.8" HorizontalAlignment="Left" Width="120" Height="120" Stretch="Uniform">
+                                            <Image x:Name="todoImage" Margin="10,-15,0,0" VerticalAlignment="Top" Source="/assets/game.png" Opacity="0.8" HorizontalAlignment="Left" Width="120" Height="120" Stretch="Uniform">
                                                 <Image.OpacityMask>
                                                     <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
                                                         <LinearGradientBrush.GradientStops>
@@ -483,8 +560,8 @@
                                                     </LinearGradientBrush>
                                                 </Image.OpacityMask>
                                             </Image>
-                                            <TextBlock Padding="10,0,0,0" Text="Gaming with Liam" Style="{StaticResource MainText}" Foreground="White" FontSize="20"/>
-                                            <TextBlock Padding="10,0,0,0" Foreground="#f5cb42" Text="Sunday July 11 at 9:00 am" Opacity="1" FontWeight="Bold" FontSize="15"></TextBlock>
+                                            <TextBlock x:Name="todoTitle" Padding="10,0,0,0" Text="Gaming with Liam" Style="{StaticResource MainText}" Foreground="White" FontSize="20"/>
+                                            <TextBlock x:Name="todoDateTime" Padding="10,0,0,0" Foreground="#ffe45e" Text="Sunday July 11 at 9:00 am" Opacity="1" FontWeight="Bold" FontSize="15"></TextBlock>
                                         </StackPanel>
                                         <Rectangle Grid.Column="1" Margin="0,5,-10,5">
                                             <Rectangle.Fill>
