@@ -144,9 +144,36 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Text="Family Spendings Report" 
+                                    <TextBlock Text="Family Spendings Report" Padding="10,0,0,0"
                                                Style="{StaticResource MainText}" FontSize="22" HorizontalAlignment="Left"/>
-                                    <Path Margin="0,0,15,0" HorizontalAlignment="Right" Grid.Row="0" Data="{StaticResource Refresh}" Fill="{StaticResource ThemeColor}" Stretch="UniformToFill" Height="18" Width="18"/>
+                                    <Border Background="White"  Margin="0,0,0,0" Padding="10,0"  HorizontalAlignment="Right"  Grid.Row="0" Width="Auto" Height="Auto">
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="reloadbtn"
+                                                        Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                        To="90" Duration="0:0:0.1"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Border.MouseLeave">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="reloadbtn"
+                                                        Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
+                                                        To="0" Duration="0:0:0.1"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger>
+                                        </Border.Triggers>
+                                        <Path x:Name="reloadbtn" RenderTransformOrigin="0.5,0.5" Data="{StaticResource Refresh}" Fill="{StaticResource ThemeColor}" Stretch="UniformToFill" Height="18" Width="18">
+                                            <Path.RenderTransform>
+                                                <RotateTransform Angle="0"/>
+                                            </Path.RenderTransform>
+                                        </Path>
+                                    </Border>
+                                    
 
                                     <lvc:CartesianChart Margin="0,10,0,0" Grid.Row="1">
                                         <lvc:CartesianChart.Series>
@@ -171,42 +198,20 @@
                             </Border>
                             <Border Grid.Row="2">
                                 <Grid HorizontalAlignment="Center">
+                                    <Grid.Resources>
+                                    </Grid.Resources>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Border SnapsToDevicePixels="True" UseLayoutRounding="True" Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" CornerRadius="12">
+                                    <Border x:Name="border1" SnapsToDevicePixels="True" UseLayoutRounding="True" Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" CornerRadius="12">
                                         <Border.Background>
-                                            <LinearGradientBrush x:Name="ThemeBrush" Opacity="0" StartPoint="0,0" EndPoint="1,1">
-                                                <GradientStop Color="#00F260" Offset="0.0"/>
-                                                <GradientStop Color="#0575E6" Offset="1.0"/>
+                                            <LinearGradientBrush Opacity="0" x:Name="ThemeBrush" StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop x:Name="Green" Color="#00F260" Offset="0.0"/>
+                                                <GradientStop x:Name="Blue" Color="#0575E6" Offset="1.0"/>
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock x:Name="ChatUser" Padding="10,0,0,0" Text="Olivia" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
-                                                <TextBlock x:Name="DefaultChatFooter" Padding="10,0,0,0" Foreground="Blue" Text="has sent you a message" Opacity="0.6" FontWeight="Bold"></TextBlock>
-                                            </StackPanel>
-                                            <Rectangle Grid.Column="1" Margin="-25,0,5,5">
-                                                <Rectangle.Fill>
-                                                    <ImageBrush ImageSource="/assets/chat.png" Stretch="UniformToFill">
-                                                    </ImageBrush>
-                                                </Rectangle.Fill>
-                                                <Rectangle.OpacityMask>
-                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
-                                                        <LinearGradientBrush.GradientStops>
-                                                            <GradientStop Offset="0.3" Color="Black"/>
-                                                            <GradientStop Offset="1" Color="Transparent"/>
-                                                        </LinearGradientBrush.GradientStops>
-                                                    </LinearGradientBrush>
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                        </Grid>
                                         <Border.Triggers>
                                             <EventTrigger RoutedEvent="Border.MouseEnter">
                                                 <EventTrigger.Actions>
@@ -214,7 +219,16 @@
                                                         <Storyboard>
                                                             <DoubleAnimation Storyboard.TargetName="ThemeBrush"
                                                                                 Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
-                                                                                To="1" Duration="0:0:0.5" />
+                                                                                To="1" Duration="0:0:0.5"/>
+                                                            <ColorAnimation Storyboard.TargetName="GreenText"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="White" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation Storyboard.TargetName="GreenText"
+                                                                            Storyboard.TargetProperty="Offset"
+                                                                            To="1" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation To="240" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
                                                         </Storyboard>
                                                     </BeginStoryboard>
                                                 </EventTrigger.Actions>
@@ -226,14 +240,78 @@
                                                             <DoubleAnimation Storyboard.TargetName="ThemeBrush"
                                                                                 Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
                                                                                 To="0" Duration="0:0:0.5" />
+                                                            <ColorAnimation Storyboard.TargetName="GreenText"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="#00F260" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation Storyboard.TargetName="GreenText"
+                                                                            Storyboard.TargetProperty="Offset"
+                                                                            To="0" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation To="220" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
                                                         </Storyboard>
                                                     </BeginStoryboard>
                                                 </EventTrigger.Actions>
                                             </EventTrigger>
                                         </Border.Triggers>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Panel.ZIndex="1" Orientation="Vertical" VerticalAlignment="Center">
+                                                <TextBlock x:Name="ChatUser" Padding="10,0,0,0" Text="Olivia" Style="{StaticResource MainText}" FontSize="20">
+                                                    <TextBlock.Foreground>
+                                                        <LinearGradientBrush x:Name="TextThemeBrush" StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop x:Name="GreenText" Color="#00F260" Offset="0.0"/>
+                                                            <GradientStop x:Name="BlueText" Color="#0575E6" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                                <TextBlock x:Name="DefaultChatFooter" Padding="10,0,10,0" Foreground="Blue" Text="has sent you a message" Opacity="0.6" FontWeight="Bold"></TextBlock>
+                                            </StackPanel>
+                                            <Rectangle  Grid.Column="1" Margin="-25,0,5,5" Panel.ZIndex="0">
+                                                <Rectangle.Fill>
+                                                    <ImageBrush ImageSource="/assets/chat.png" Stretch="UniformToFill"/>
+                                                </Rectangle.Fill>
+                                                <Rectangle.OpacityMask>
+                                                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                                                        <LinearGradientBrush.GradientStops>
+                                                            <GradientStop Offset="0.3" Color="Black"/>
+                                                            <GradientStop Offset="1" Color="Transparent"/>
+                                                        </LinearGradientBrush.GradientStops>
+                                                    </LinearGradientBrush>
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </Grid>
+                                        
                                     </Border>
 
                                     <Border Width="220" Margin="10" Background="{StaticResource ThemeColor}" Grid.Column="1" CornerRadius="12">
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="240" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Border.MouseLeave">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation To="220" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                        </Border.Triggers>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -251,7 +329,7 @@
                                                     Height="50" Width="50" PFontColor="White"/>
                                             <TextBlock Grid.Row="1" Grid.ColumnSpan="2" FontSize="12" Padding="10,0,0,0" FontWeight="Bold" Foreground="White" Text="Tasks remaining..."/>
                                             <TextBlock Grid.Row="2" FontSize="8.5" Foreground="White" Opacity="0.8" Padding="10,0,0,0" FontWeight="Bold" Grid.ColumnSpan="2" Text="Complete these tasks to receive your pocket money."/>
-                                            <Rectangle Grid.Row="0" Margin="0,-20,0,10" Grid.Column="1">
+                                            <Rectangle Grid.Row="0" Margin="0,-20,0,-50" Grid.Column="1">
                                                 <Rectangle.Fill>
                                                     <ImageBrush ImageSource="/assets/chores.png" Stretch="Uniform"/>
                                                 </Rectangle.Fill>
@@ -270,24 +348,90 @@
                                     </Border>
 
                                     <Border Width="220" Margin="10" BorderThickness="3" BorderBrush="{StaticResource ThemeColor}" Grid.Column="2" CornerRadius="12">
+                                        <Border.Background>
+                                            <LinearGradientBrush Opacity="0" x:Name="ThemeBrush2" StartPoint="0,0" EndPoint="1,1">
+                                                <GradientStop Color="#00F260" Offset="0.0"/>
+                                                <GradientStop Color="#0575E6" Offset="1.0"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <Border.Triggers>
+                                            <EventTrigger RoutedEvent="Border.MouseEnter">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="ThemeBrush2"
+                                                                                Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
+                                                                                To="1" Duration="0:0:0.5"/>
+                                                            <ColorAnimation Storyboard.TargetName="Green2"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="White" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation Storyboard.TargetName="Green2"
+                                                                            Storyboard.TargetProperty="Offset"
+                                                                            To="1" Duration="0:0:0.5"/>
+                                                            <ColorAnimation Storyboard.TargetName="PathThemeBrush"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="White" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation To="50" Duration="0:0:0.2" Storyboard.TargetName="download" Storyboard.TargetProperty="(Path.Height)" AutoReverse="False" />
+                                                            <DoubleAnimation To="240" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10,0" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                            <EventTrigger RoutedEvent="Border.MouseLeave">
+                                                <EventTrigger.Actions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="ThemeBrush2"
+                                                                                Storyboard.TargetProperty="(LinearGradientBrush.Opacity)" 
+                                                                                To="0" Duration="0:0:0.5" />
+                                                            <ColorAnimation Storyboard.TargetName="Green2"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="#00F260" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation Storyboard.TargetName="Green2"
+                                                                            Storyboard.TargetProperty="Offset"
+                                                                            To="0" Duration="0:0:0.5"/>
+                                                            <ColorAnimation Storyboard.TargetName="PathThemeBrush"
+                                                                            Storyboard.TargetProperty="Color"
+                                                                            To="#00F260" Duration="0:0:0.5"/>
+                                                            <DoubleAnimation To="0" Duration="0:0:0.2" Storyboard.TargetName="download" Storyboard.TargetProperty="(Path.Height)" AutoReverse="False" />
+                                                            <DoubleAnimation To="220" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Width)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                            <ThicknessAnimation To="10" Duration="0:0:0.2" Storyboard.TargetProperty="(Border.Margin)" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger.Actions>
+                                            </EventTrigger>
+                                        </Border.Triggers>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Path Margin="10,0,0,0" VerticalAlignment="Top" Fill="{StaticResource ThemeColor}" Data="{StaticResource Download}" Opacity="0.8" HorizontalAlignment="Left" Width="60" Height="60" Stretch="Uniform">
+                                            <Path x:Name="download" Margin="10,0,0,0" VerticalAlignment="Top" Data="{StaticResource Download}" Opacity="0.8" HorizontalAlignment="Left" Width="50" Height="0" Stretch="Uniform">
+                                                <Path.Fill>
+                                                    <SolidColorBrush x:Name="PathThemeBrush" Color="#00F260"/>
+                                                </Path.Fill>
                                                 <Path.OpacityMask>
                                                     <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
                                                         <LinearGradientBrush.GradientStops>
-                                                            <GradientStop Offset="0.2" Color="Black"/>
+                                                            <GradientStop Offset="0.4" Color="Black"/>
                                                             <GradientStop Offset="0.8" Color="Transparent"/>
                                                         </LinearGradientBrush.GradientStops>
                                                     </LinearGradientBrush>
                                                 </Path.OpacityMask>
                                             </Path>
                                             <StackPanel  Orientation="Vertical" VerticalAlignment="Center">
-                                                <TextBlock Padding="10,40,0,0" Text="102.8 GB" Style="{StaticResource MainText}" Foreground="{StaticResource ThemeColor}" FontSize="20"/>
-                                                <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="Data used this week" Opacity="1" FontWeight="Bold"></TextBlock>
+                                                <TextBlock Padding="10,40,0,0" Text="102.8 GB" Style="{StaticResource MainText}" FontSize="20">
+                                                    <TextBlock.Foreground>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop x:Name="Green2" Color="#00F260" Offset="0.0"/>
+                                                            <GradientStop x:Name="Blue2" Color="#0575E6" Offset="1.0"/>
+                                                        </LinearGradientBrush>
+                                                    </TextBlock.Foreground>
+                                                </TextBlock>
+                                                <TextBlock Padding="10,0,0,0" Foreground="Blue" Text="Data used this week" Opacity="0.6" FontWeight="Bold"></TextBlock>
                                             </StackPanel>
                                             <Rectangle Grid.Column="1" Margin="0,0,5,0">
                                                 <Rectangle.Fill>
@@ -340,7 +484,7 @@
                                                 </Image.OpacityMask>
                                             </Image>
                                             <TextBlock Padding="10,0,0,0" Text="Gaming with Liam" Style="{StaticResource MainText}" Foreground="White" FontSize="20"/>
-                                            <TextBlock Padding="10,0,0,0" Foreground="Orange" Text="Sunday July 11 at 9:00 am" Opacity="1" FontWeight="Bold" FontSize="15"></TextBlock>
+                                            <TextBlock Padding="10,0,0,0" Foreground="#f5cb42" Text="Sunday July 11 at 9:00 am" Opacity="1" FontWeight="Bold" FontSize="15"></TextBlock>
                                         </StackPanel>
                                         <Rectangle Grid.Column="1" Margin="0,5,-10,5">
                                             <Rectangle.Fill>
