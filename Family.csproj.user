@@ -19,6 +19,12 @@
     <Compile Update="customcontrols\ScrollBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="customcontrols\TextboxwithPlaceHolder.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="customcontrols\CircularProgressBar.xaml">
@@ -31,6 +37,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="customcontrols\ScrollBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="customcontrols\TextboxwithPlaceHolder.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Login.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

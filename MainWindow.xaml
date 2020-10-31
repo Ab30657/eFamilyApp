@@ -137,7 +137,7 @@
                                         <ColumnDefinition Width="2*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Border Padding="30,20">
+                                    <Border Padding="30,20" Cursor="Hand">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="1*"/>
@@ -152,7 +152,7 @@
                                                 <Run Text="Welcome to the eFam App"/>
                                             </TextBlock>
                                             <TextBlock TextWrapping="Wrap" Padding="0,0,20,0" Grid.Row="2" Style="{StaticResource TitleText}" Foreground="#f5f5f5">
-                                                <Run Text="All about family project activities will be update here. Learn more about us online..."/>
+                                                <Run Text="All about family project activities will be updated here. Learn more about us online..."/>
                                             </TextBlock>
                                         </Grid>
                                     </Border>

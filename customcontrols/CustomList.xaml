@@ -122,7 +122,7 @@
                                 </Border>
                                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                     <TextBlock FontWeight="SemiBold" Margin="0" FontSize="14" Text="{Binding FileName}"/>
-                                    <TextBlock Margin="0" Style="{StaticResource TitleText}" FontSize="12">
+                                    <TextBlock x:Name="itemSubText" Margin="0" Style="{StaticResource TitleText}" FontSize="12">
                                         <Run Text="{Binding Quantity}"/>
                                         <Run Text="{Binding Unit}"/>
                                     </TextBlock>
@@ -137,6 +137,32 @@
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#9effa1"/>
                             </Trigger>
+                            <EventTrigger RoutedEvent="ListBoxItem.MouseEnter">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="itemSubText"
+                                                                Storyboard.TargetProperty="(Foreground).Color"
+                                                                Duration="0:0:0">
+                                                <DiscreteColorKeyFrame Value="White" KeyTime="0:0:0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ListBoxItem.MouseLeave">
+                                <EventTrigger.Actions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimationUsingKeyFrames Storyboard.TargetName="itemSubText"
+                                                                Storyboard.TargetProperty="(Foreground).Color"
+                                                                Duration="0:0:0">
+                                                <DiscreteColorKeyFrame Value="#C2C3C3" KeyTime="0:0:0"/>
+                                            </ColorAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger.Actions>
+                            </EventTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
