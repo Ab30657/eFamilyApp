@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:Family"
              StartupUri="Login.xaml">
     <Application.Resources>
+
+
+        <PathGeometry x:Key="showpass" Figures="M234.7,96c-35.3,0-64,28.7-64,64s28.7,64,64,64s64-28.7,64-64S270,96,234.7,96z M234.7,0C128,0,36.9,66.3,0,160
+	                                            c36.9,93.7,128,160,234.7,160c106.8,0,197.8-66.3,234.7-160C432.4,66.3,341.4,0,234.7,0z M234.7,266.7
+	                                            C175.8,266.7,128,218.9,128,160S175.8,53.3,234.7,53.3S341.3,101.1,341.3,160S293.5,266.7,234.7,266.7z"/>
+        
+        
         <Style x:Key="TitleText" TargetType="{x:Type TextBlock}">
             <Setter Property="Foreground" Value="#C2C3C3"/>
             <Setter Property="FontSize" Value="13"/>

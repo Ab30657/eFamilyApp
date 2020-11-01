@@ -48,5 +48,21 @@ namespace Family.customcontrols
             DependencyProperty.Register("Text", typeof(string), typeof(TextboxwithPlaceHolder));
 
 
+
+
+        public bool IsPassword
+        {
+            get { return (bool)GetValue(IsPasswordProperty); }
+            set { SetValue(IsPasswordProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPassword.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPasswordProperty =
+            DependencyProperty.Register("IsPassword", typeof(bool), typeof(TextboxwithPlaceHolder));
+
+        private void passbox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            email.Text = passbox.Password;
+        }
     }
 }

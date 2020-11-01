@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Family.customcontrols"
              mc:Ignorable="d" x:Name="_this"
-             MinWidth="240">
+             MinWidth="230" MaxWidth="230">
     <UserControl.Resources>
         <Style x:Key="CredentialtitleStyle" TargetType="{x:Type TextBlock}">
             <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -64,8 +64,83 @@
                         </BeginStoryboard>
                     </DataTrigger.ExitActions>
                 </DataTrigger>
+                
+                <!--get password  inside the textbox if the textbox text is empty-->
+                <DataTrigger Binding="{Binding Text,Mode=TwoWay, ElementName=_this}" Value="">
+                    <Setter Property="Text" Value="{Binding Password, ElementName=passbox}"/>
+                </DataTrigger>
+
+                <!--also show only when the ShowPass Button is pressed-->
+                <DataTrigger Binding="{Binding Visibility, ElementName=passbox}" Value="Visible">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+                
             </Style.Triggers>
-            
+        </Style>
+
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="Padding" Value="2 0 30 0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding FontSize, ElementName=title}" Value="10">
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="14"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0 7 0 0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard SpeedRatio="10">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="10"/>
+                                <ThicknessAnimation Storyboard.TargetProperty="Margin" To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+                
+                <!--hide password if the IsPassword -false-->
+                <DataTrigger Binding="{Binding IsPassword, ElementName=_this}" Value="False">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+
+                <!--also Hide when the ShowPass Button is pressed-->
+                <DataTrigger Binding="{Binding IsPressed, ElementName=showPass}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="#a3a3a4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <Path
+                                Width="15"
+                                Stretch="Uniform"
+                                Fill="{StaticResource ThemeColor}"
+                                Data="{StaticResource showpass}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsPassword, ElementName=_this}" Value="False">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
     <Border Background="Transparent"
@@ -81,6 +156,16 @@
                    Style="{StaticResource CredentialStyle}">
 
                     </TextBox>
+
+                    <PasswordBox 
+                                 x:Name="passbox"
+                                 PasswordChanged="passbox_PasswordChanged"/>
+
+                    <Button x:Name="showPass"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"/>
                 </Grid>
             </Border>
         </Grid>

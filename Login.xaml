@@ -10,29 +10,46 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" WindowStyle="None"
         Title="Login" Height="400" Width="600">
+<Window.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="resources/icons.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Window.Resources>
     <Border CornerRadius="30" Background="White">
         <StackPanel Orientation="Horizontal">
             <Grid Width="300">
                 <Border CornerRadius="30,0,0,30" Background="AliceBlue">
                     <Grid Margin="30,20,0,20">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Bottom" Orientation="Vertical">
+                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock FontSize="24" Text="Login" Style="{StaticResource MainText}"/>
-                            <TextBlock FontSize="14" Foreground="LightGray" Text="Welcome to eFam App" FontFamily="Arial" FontWeight="Bold" Style="{StaticResource TitleText}"/>
+                            <TextBlock FontSize="14" Foreground="LightGray" Text="Welcome to eFam App" FontFamily="Arial" FontWeight="Normal" Style="{StaticResource TitleText}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <Path Margin="5,0,0,-5" Data="{StaticResource email}" Stretch="Uniform" Height="20" Width="20" Fill="{StaticResource ThemeColor}"/>
                             <uBuilt:TextboxwithPlaceHolder Placeholder="Email"/>
                         </StackPanel>
+                        
                         <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <uBuilt:TextboxwithPlaceHolder Placeholder="Password"/>
+                            <Path Margin="5,0,0,-5" Data="{StaticResource lock}" Stretch="Uniform" Height="20" Width="20" Fill="{StaticResource ThemeColor}"/>
+                            <uBuilt:TextboxwithPlaceHolder Placeholder="Password" IsPassword="True"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="5" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top">
+                            <CheckBox Content="Remember Me" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Forgot Password?">
+                                
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
                 </Border>
