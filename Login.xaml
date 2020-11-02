@@ -21,16 +21,17 @@
         <StackPanel Orientation="Horizontal">
             <Grid Width="300">
                 <Border CornerRadius="30,0,0,30" Background="AliceBlue">
-                    <Grid Margin="30,20,0,20">
+                    <Grid Margin="20,20,20,20">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition Height="0.8*"/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+                        <StackPanel Margin="5" VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock FontSize="24" Text="Login" Style="{StaticResource MainText}"/>
                             <TextBlock FontSize="14" Foreground="LightGray" Text="Welcome to eFam App" FontFamily="Arial" FontWeight="Normal" Style="{StaticResource TitleText}"/>
                         </StackPanel>
@@ -45,12 +46,82 @@
                             <uBuilt:TextboxwithPlaceHolder Placeholder="Password" IsPassword="True"/>
                         </StackPanel>
 
-                        <StackPanel Margin="5" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top">
-                            <CheckBox Content="Remember Me" HorizontalAlignment="Left"/>
-                            <TextBlock Text="Forgot Password?">
-                                
+                        <StackPanel Margin="10 5 5 5" Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top">
+                            <CheckBox 
+                                FontWeight="Bold"
+                                Content="Remember Me" 
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center">
+                                <CheckBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius" Value="2"/>
+                                    </Style>
+                                </CheckBox.Resources>
+                            </CheckBox>
+                            <TextBlock Margin="40 0 0 0" FontWeight="Bold">
+                                 <Hyperlink TextDecorations="None" NavigateUri="http://www.github.com/Ab30657">
+                                     Forgot Password?
+                                 </Hyperlink>
                             </TextBlock>
                         </StackPanel>
+
+                        <Button Content="Login" Margin="10 5" Grid.Row="4">
+                            <Button.Resources>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" Value="{StaticResource ThemeColor}"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border
+                                                    Name="bd"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    CornerRadius="20">
+                                                    <ContentPresenter
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
+
+                        <Button Content="Cancel" Margin="10 5" Grid.Row="5">
+                            <Button.Resources>
+                                <LinearGradientBrush x:Key="CancelTheme" StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="Red"  Offset="0"/>
+                                    <GradientStop Color="Purple" Offset="1"/>
+                                </LinearGradientBrush>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" Value="{StaticResource CancelTheme}"/>
+                                    <Setter Property="FontSize" Value="20"/>
+                                    <Setter Property="FontWeight" Value="Bold"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border
+                                                    Name="bd"
+                                                    Background="{TemplateBinding Background}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    CornerRadius="20">
+                                                    <ContentPresenter
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Resources>
+                        </Button>
                     </Grid>
                 </Border>
             </Grid>
